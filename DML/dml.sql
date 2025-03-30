@@ -1,3 +1,5 @@
+USE campuslands;
+
 -- 1. Countries (10 inserts)
 INSERT INTO countries (country_name, iso_code_country) VALUES ('Colombia', 'COL');
 INSERT INTO countries (country_name, iso_code_country) VALUES ('Argentina', 'ARG');

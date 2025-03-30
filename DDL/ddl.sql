@@ -147,16 +147,6 @@ CREATE TABLE IF NOT EXISTS camper_state_history (
     FOREIGN KEY (camper_id) REFERENCES camper(id)
 );
 
--- creacion tabla egresados
-
-CREATE TABLE IF NOT EXISTS alumni (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    camper_id INT NOT NULL,
-    graduation_date DATE NOT NULL,
-    additional_info TEXT,
-    FOREIGN KEY (camper_id) REFERENCES camper(id)
-);
-
 -- creacion tabla trainer
 
 CREATE TABLE IF NOT EXISTS trainer(
@@ -258,6 +248,18 @@ CREATE TABLE IF NOT EXISTS route_modules (
     PRIMARY KEY (route_id, module_id),
     FOREIGN KEY (route_id) REFERENCES routes(id),
     FOREIGN KEY (module_id) REFERENCES modules(id)
+);
+
+-- creacion tabla egresados
+
+CREATE TABLE IF NOT EXISTS alumni (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    camper_id INT NOT NULL,
+    graduation_date DATE NOT NULL,
+    route_id INT NOT NULL,
+    additional_info TEXT,
+    FOREIGN KEY (camper_id) REFERENCES camper(id),
+    FOREIGN KEY (route_id) REFERENCES routes(id)
 );
 
 -- creacion tabla areas de entrenamiento
