@@ -368,7 +368,7 @@ CREATE TABLE IF NOT EXISTS attendance (
     attendance_date DATE,
     attendance_status ENUM('Present', 'Absent', 'Late') DEFAULT 'Absent',
     arrival_time TIME NULL,
-    justification TEXT DEFAULT 'On time',
+    justification TEXT,
     evidence_url VARCHAR(255),
     FOREIGN KEY (camper_id) REFERENCES camper(id),
     FOREIGN KEY (route_id) REFERENCES routes(id),
