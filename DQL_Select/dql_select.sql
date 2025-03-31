@@ -1,5 +1,7 @@
 USE campuslands;
 
+-- Campers
+
 -- 1. Obtener todos los campers inscritos actualmente.
 
 SELECT c.id, p.first_name AS Nombre, p.last_names AS Apellidos, p.document_number AS Numero_Identificacion, c.status_camper AS Status
@@ -77,3 +79,52 @@ FROM camper c
 INNER JOIN person p ON c.person_id = p.id
 LEFT JOIN camper_route_enrollments cre ON c.id = cre.camper_id
 WHERE cre.camper_id IS NULL;
+
+-- Evaluaciones
+
+-- 1. Obtener las notas teóricas, prácticas y quizzes de cada camper por módulo.
+
+SELECT m.module_name AS Modulo, c.id, p.first_name AS Nombre, ec.component_type AS Tipo_Nota, ec.note AS Nota
+FROM camper c
+INNER JOIN person p ON c.person_id = p.id
+INNER JOIN evaluations e ON c.id = e.camper_id
+INNER JOIN evaluation_components ec ON e.id = ec.evaluation_id
+INNER JOIN modules m ON e.module_id = m.id
+WHERE ec.component_type IN ('Teorico', 'Practico', 'Quiz')
+ORDER BY m.module_name ASC;
+
+-- 2. Calcular la nota final de cada camper por módulo.
+
+
+
+-- 3. Mostrar los campers que reprobaron algún módulo (nota < 60).
+
+
+
+-- 4. Listar los módulos con más campers en bajo rendimiento.
+
+
+
+-- 5. Obtener el promedio de notas finales por cada módulo.
+
+
+
+-- 6. Consultar el rendimiento general por ruta de entrenamiento.
+
+
+
+-- 7. Mostrar los trainers responsables de campers con bajo rendimiento.
+
+
+
+-- 8. Comparar el promedio de rendimiento por trainer.
+
+
+
+-- 9. Listar los mejores 5 campers por nota final en cada ruta.
+
+
+
+-- 10. Mostrar cuántos campers pasaron cada módulo por ruta.
+
+

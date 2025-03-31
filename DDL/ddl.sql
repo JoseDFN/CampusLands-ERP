@@ -342,6 +342,7 @@ CREATE TABLE IF NOT EXISTS evaluations (
     id INT AUTO_INCREMENT PRIMARY KEY,
     camper_id INT NOT NULL,
     module_id INT NOT NULL,
+    final_grade DECIMAL(3,0) DEFAULT 0.00,
     FOREIGN KEY (camper_id) REFERENCES camper(id),
     FOREIGN KEY (module_id) REFERENCES modules(id)
 );
@@ -350,7 +351,7 @@ CREATE TABLE IF NOT EXISTS evaluations (
 CREATE TABLE IF NOT EXISTS evaluation_components (
     id INT AUTO_INCREMENT PRIMARY KEY,
     evaluation_id INT NOT NULL,
-    component_type ENUM('Teorico', 'Practico', 'Quiz', 'Final') NOT NULL,
+    component_type ENUM('Teorico', 'Practico', 'Quiz') NOT NULL,
     note DECIMAL(3,0) CHECK (note >= 0 AND note <= 100),
     evaluation_date DATE NOT NULL,
     FOREIGN KEY (evaluation_id) REFERENCES evaluations(id)
