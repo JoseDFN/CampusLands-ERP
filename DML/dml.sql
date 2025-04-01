@@ -88,7 +88,7 @@ INSERT INTO phone_types (phone_type) VALUES ('Personal');
 INSERT INTO phone_types (phone_type) VALUES ('Business');
 INSERT INTO phone_types (phone_type) VALUES ('Secondary');
 
--- 8. Phone Numbers (10 inserts)
+-- 8. Phone Numbers (29 inserts)
 INSERT INTO phone_numbers (phone_number, extension, phone_type_id) VALUES ('3001000001', '057', 1);
 INSERT INTO phone_numbers (phone_number, extension, phone_type_id) VALUES ('3001000002', '057', 1);
 INSERT INTO phone_numbers (phone_number, extension, phone_type_id) VALUES ('3001000003', '057', 1);
@@ -131,7 +131,7 @@ INSERT INTO document_types (document_type) VALUES ('Residence Permit');
 INSERT INTO document_types (document_type) VALUES ('Tax ID');
 INSERT INTO document_types (document_type) VALUES ('Other');
 
--- 10. Person (10 inserts)
+-- 10. Person (26 inserts)
 
 INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) VALUES ('Pedro', 'Ruiz González', 'pedro.ruiz@example.com', '200000011', 2, 4);
 INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) VALUES ('Valentina', 'Díaz Herrera', 'valentina.diaz@example.com', '200000012', 2, 5);
@@ -160,7 +160,7 @@ INSERT INTO person (first_name, last_names, email, document_number, document_typ
 INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) VALUES ('Monica', 'Lopez', 'monica.lopez@campuslands.com', '100000005', 2, 28);
 INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) VALUES ('Michael', 'Torres', 'michael.torres@campuslands.com', '100000006', 2, 29);
 
--- 11. Person Phones (10 inserts)
+-- 11. Person Phones (26 inserts)
 INSERT INTO person_phones (person_id, phone_id) VALUES (1, 1);
 INSERT INTO person_phones (person_id, phone_id) VALUES (2, 2);
 INSERT INTO person_phones (person_id, phone_id) VALUES (3, 3);
@@ -202,19 +202,30 @@ INSERT INTO guardian (person_id) VALUES (9);
 INSERT INTO guardian (person_id) VALUES (10);
 
 -- 13. Camper (10 inserts)
-INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (11, 1, 1, '2023-09-01', 'Inscrito', 'Bajo');
-INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (12, 2, 2, '2023-09-01', 'Inscrito', 'Bajo');
-INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (13, 3, 3, '2023-09-01', 'Inscrito', 'Bajo');
-INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (14, 4, 1, '2023-09-01', 'Inscrito', 'Bajo');
-INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (15, 5, 2, '2023-09-01', 'Inscrito', 'Bajo');
-INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (16, 6, 3, '2023-09-01', 'Inscrito', 'Bajo');
-INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (17, 7, 1, '2023-09-01', 'Inscrito', 'Bajo');
-INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (18, 8, 2, '2023-09-01', 'Inscrito', 'Bajo');
-INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (19, 9, 3, '2023-09-01', 'Inscrito', 'Bajo');
-INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (20, 10, 1, '2023-09-01', 'Inscrito', 'Bajo');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (11, 1, 1, '2023-09-01', 'En proceso de ingreso', 'Bajo');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (12, 2, 2, '2023-09-01', 'En proceso de ingreso', 'Bajo');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (13, 3, 3, '2023-09-01', 'En proceso de ingreso', 'Bajo');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (14, 4, 1, '2023-09-01', 'En proceso de ingreso', 'Bajo');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (15, 5, 2, '2023-09-01', 'En proceso de ingreso', 'Bajo');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (16, 6, 3, '2023-09-01', 'En proceso de ingreso', 'Bajo');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (17, 7, 1, '2023-09-01', 'En proceso de ingreso', 'Bajo');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (18, 8, 2, '2023-09-01', 'En proceso de ingreso', 'Bajo');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (19, 9, 3, '2023-09-01', 'En proceso de ingreso', 'Bajo');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (20, 10, 1, '2023-09-01', 'En proceso de ingreso', 'Bajo');
 
--- 16. Trainer (10 inserts)
+-- 14. Camper State History (10 inserts)
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (1, 'En proceso de ingreso', 'Inscrito', 'Completó el proceso de inscripción');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (2, 'En proceso de ingreso', 'Inscrito', 'Completó el proceso de inscripción');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (3, 'En proceso de ingreso', 'Inscrito', 'Completó el proceso de inscripción');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (4, 'En proceso de ingreso', 'Inscrito', 'Completó el proceso de inscripción');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (5, 'En proceso de ingreso', 'Inscrito', 'Completó el proceso de inscripción');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (6, 'En proceso de ingreso', 'Inscrito', 'Completó el proceso de inscripción');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (7, 'En proceso de ingreso', 'Inscrito', 'Completó el proceso de inscripción');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (8, 'En proceso de ingreso', 'Inscrito', 'Completó el proceso de inscripción');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (9, 'En proceso de ingreso', 'Inscrito', 'Completó el proceso de inscripción');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (10, 'En proceso de ingreso', 'Inscrito', 'Completó el proceso de inscripción');
 
+-- 15. Trainer (6 inserts)
 INSERT INTO trainer (person_id, branch_id) VALUES (21, 1);
 INSERT INTO trainer (person_id, branch_id) VALUES (22, 1);
 INSERT INTO trainer (person_id, branch_id) VALUES (23, 1);
@@ -222,8 +233,7 @@ INSERT INTO trainer (person_id, branch_id) VALUES (24, 1);
 INSERT INTO trainer (person_id, branch_id) VALUES (25, 1);
 INSERT INTO trainer (person_id, branch_id) VALUES (26, 1);
 
-
--- 17. Competencies (10 inserts)
+-- 16. Competencies (10 inserts)
 INSERT INTO competencies (competency_name) VALUES ('C#');
 INSERT INTO competencies (competency_name) VALUES ('Java');
 INSERT INTO competencies (competency_name) VALUES ('Python');
@@ -235,38 +245,26 @@ INSERT INTO competencies (competency_name) VALUES ('PHP');
 INSERT INTO competencies (competency_name) VALUES ('INGLES');
 INSERT INTO competencies (competency_name) VALUES ('SER');
 
--- 18. Trainer Competencies (12 inserts)
-
--- Para Trainer Jholver (person_id = 21) se asignan: C# (1), JAVA (2), Python (3), PHP (8) y SQL (4)
+-- 17. Trainer Competencies (17 inserts)
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (1, 1);
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (1, 2);
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (1, 3);
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (1, 8);
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (1, 4);
-
--- Para Trainer Miguel (person_id = 22) se asignan: SQL (4), HTML (5), CSS (6) y JavaScript (7)
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (2, 4);
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (2, 5);
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (2, 6);
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (2, 7);
-
--- Para Trainer Jholver (person_id = 23) se asignan: C# (1), JAVA (2), Python (3), PHP (8) y SQL (4)
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (3, 1);
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (3, 2);
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (3, 3);
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (3, 8);
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (3, 4);
-
--- Para Trainer Jose (person_id = 24) se asigna: INGLES (9)
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (4, 9);
-
--- Para Trainer Monica (person_id = 25) se asigna: SER (10)
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (5, 10);
-
--- Para Trainer Michael (person_id = 26) se asigna: INGLES (9)
 INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (6, 9);
 
--- 19. Notifications (10 inserts)
+-- 18. Notifications (6 inserts)
 INSERT INTO notifications (trainer_id, message, created_at) VALUES (1, 'Notification for trainer 1', '2023-09-03 09:00:00');
 INSERT INTO notifications (trainer_id, message, created_at) VALUES (2, 'Notification for trainer 2', '2023-09-03 09:01:00');
 INSERT INTO notifications (trainer_id, message, created_at) VALUES (3, 'Notification for trainer 3', '2023-09-03 09:02:00');
@@ -274,7 +272,7 @@ INSERT INTO notifications (trainer_id, message, created_at) VALUES (4, 'Notifica
 INSERT INTO notifications (trainer_id, message, created_at) VALUES (5, 'Notification for trainer 5', '2023-09-03 09:04:00');
 INSERT INTO notifications (trainer_id, message, created_at) VALUES (6, 'Notification for trainer 6', '2023-09-03 09:05:00');
 
--- 20. SGBDs (10 inserts)
+-- 19. SGBDs (10 inserts)
 INSERT INTO sgbds (sgbd_name) VALUES ('MySQL');
 INSERT INTO sgbds (sgbd_name) VALUES ('MongoDB');
 INSERT INTO sgbds (sgbd_name) VALUES ('PostgreSQL');
@@ -286,17 +284,91 @@ INSERT INTO sgbds (sgbd_name) VALUES ('Cassandra');
 INSERT INTO sgbds (sgbd_name) VALUES ('Redis');
 INSERT INTO sgbds (sgbd_name) VALUES ('DB2');
 
--- 21. Routes (10 inserts)
+-- 20. Routes (5 inserts)
 INSERT INTO routes (route_name, main_sgbd, alternative_sgbd) VALUES ('Fundamentos de programación', 1, 2);
 INSERT INTO routes (route_name, main_sgbd, alternative_sgbd) VALUES ('Programación Web', 3, 4);
 INSERT INTO routes (route_name, main_sgbd, alternative_sgbd) VALUES ('Programación formal', 5, 6);
 INSERT INTO routes (route_name, main_sgbd, alternative_sgbd) VALUES ('Bases de datos', 1, 3);
 INSERT INTO routes (route_name, main_sgbd, alternative_sgbd) VALUES ('Backend', 7, 8);
 
--- 22. Campers Group (10 inserts)
+-- 21. Skills (10 inserts)
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Introducción a la algoritmia', 'Module on basic algorithm concepts', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('PSeInt', 'Module for PSeInt programming', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Python', 'Module for Python programming', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('HTML', 'Module for HTML basics', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('CSS', 'Module for CSS styling', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Bootstrap', 'Module for Bootstrap framework', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Java', 'Module for Java programming', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('JavaScript', 'Module for JavaScript programming', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('C#', 'Module for C# programming', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('NetCore', 'Module for .NET Core framework', 30, 60, 10);
+
+-- 22. Base Route Skills
+INSERT INTO base_route_skills (skill_id, base_route_description) VALUES (1, 'Base description for module 1');
+INSERT INTO base_route_skills (skill_id, base_route_description) VALUES (2, 'Base description for module 2');
+INSERT INTO base_route_skills (skill_id, base_route_description) VALUES (3, 'Base description for module 3');
+INSERT INTO base_route_skills (skill_id, base_route_description) VALUES (4, 'Base description for module 4');
+INSERT INTO base_route_skills (skill_id, base_route_description) VALUES (5, 'Base description for module 5');
+
+-- 23. Route Skills
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (5, 1, 3, 1);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (5, 2, 3, 1);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (5, 3, 3, 1);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (5, 4, 3, 1);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (5, 5, 3, 1);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (5, 6, 3, 1);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (5, 7, 3, 1);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (5, 8, 3, 1);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (5, 9, 3, 1);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (5, 10, 3, 1);
+
+-- 24. Modules
+INSERT INTO modules (module_name, module_description, module_status) VALUES 
+  ('Fundamentos de Algoritmia', 'Introducción a conceptos básicos de algoritmia', 'Activo'),
+  ('Programación Avanzada', 'Conceptos avanzados de programación y desarrollo de software', 'Activo'),
+  ('Desarrollo Web', 'Fundamentos de desarrollo web con HTML, CSS y JavaScript', 'Activo');
+
+-- 25. Module Skills
+INSERT INTO module_skills (module_id, skill_id) VALUES 
+  (1, 1), 
+  (1, 2), 
+  (2, 3), 
+  (3, 4), 
+  (3, 5), 
+  (3, 8);
+
+-- 26. Module Competencies
+INSERT INTO module_competencies (module_id, competency_id) VALUES
+  (1, 3), -- Módulo Fundamentos de Algoritmia - Python
+  (2, 2), -- Módulo Programación Avanzada - Java
+  (2, 1), -- Módulo Programación Avanzada - C#
+  (3, 7), -- Módulo Desarrollo Web - JavaScript
+  (3, 5), -- Módulo Desarrollo Web - CSS
+  (3, 4); -- Módulo Desarrollo Web - HTML
+
+-- 27. Sessions Class
+INSERT INTO sessions_class (session_name, session_description, session_date) VALUES 
+  ('Sesion Introductoria', 'Presentación del curso y fundamentos iniciales', '2023-10-20'),
+  ('Sesion Avanzada', 'Profundización en temas avanzados', '2023-10-21');
+
+-- 28. Session Modules
+INSERT INTO session_modules (session_id, module_id) VALUES 
+  (1, 1), 
+  (1, 3), 
+  (2, 2);
+
+-- 29. Trainer Module Assignments
+INSERT INTO trainer_module_assignments (trainer_id, module_id) VALUES 
+  (1, 1), -- Jholver asignado a Fundamentos de Algoritmia
+  (1, 2), -- Jholver asignado a Programación Avanzada
+  (2, 3), -- Miguel asignado a Desarrollo Web
+  (3, 1), -- Pedro asignado a Fundamentos de Algoritmia
+  (3, 2); -- Pedro asignado a Programación Avanzada
+
+-- 30. Campers Group
 INSERT INTO campers_group (group_name, route_id, creation_date) VALUES ('Group 1', 5, CURRENT_DATE);
 
--- 23. Campers Group Members (10 inserts)
+-- 31. Campers Group Members
 INSERT INTO campers_group_members (group_id, camper_id) VALUES (1, 1);
 INSERT INTO campers_group_members (group_id, camper_id) VALUES (1, 2);
 INSERT INTO campers_group_members (group_id, camper_id) VALUES (1, 3);
@@ -308,38 +380,7 @@ INSERT INTO campers_group_members (group_id, camper_id) VALUES (1, 8);
 INSERT INTO campers_group_members (group_id, camper_id) VALUES (1, 9);
 INSERT INTO campers_group_members (group_id, camper_id) VALUES (1, 10);
 
--- 24. Modules (10 inserts)
-INSERT INTO modules (module_name, module_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Introducción a la algoritmia', 'Module on basic algorithm concepts', 30, 60, 10);
-INSERT INTO modules (module_name, module_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('PSeInt', 'Module for PSeInt programming', 30, 60, 10);
-INSERT INTO modules (module_name, module_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Python', 'Module for Python programming', 30, 60, 10);
-INSERT INTO modules (module_name, module_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('HTML', 'Module for HTML basics', 30, 60, 10);
-INSERT INTO modules (module_name, module_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('CSS', 'Module for CSS styling', 30, 60, 10);
-INSERT INTO modules (module_name, module_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Bootstrap', 'Module for Bootstrap framework', 30, 60, 10);
-INSERT INTO modules (module_name, module_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Java', 'Module for Java programming', 30, 60, 10);
-INSERT INTO modules (module_name, module_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('JavaScript', 'Module for JavaScript programming', 30, 60, 10);
-INSERT INTO modules (module_name, module_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('C#', 'Module for C# programming', 30, 60, 10);
-INSERT INTO modules (module_name, module_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('NetCore', 'Module for .NET Core framework', 30, 60, 10);
-
--- 25. Base Route Modules (10 inserts)
-INSERT INTO base_route_modules (module_id, base_route_description) VALUES (1, 'Base description for module 1');
-INSERT INTO base_route_modules (module_id, base_route_description) VALUES (2, 'Base description for module 2');
-INSERT INTO base_route_modules (module_id, base_route_description) VALUES (3, 'Base description for module 3');
-INSERT INTO base_route_modules (module_id, base_route_description) VALUES (4, 'Base description for module 4');
-INSERT INTO base_route_modules (module_id, base_route_description) VALUES (5, 'Base description for module 5');
-
--- 26. Route Modules (10 inserts)
-INSERT INTO route_modules (route_id, module_id) VALUES (5, 1);
-INSERT INTO route_modules (route_id, module_id) VALUES (5, 2);
-INSERT INTO route_modules (route_id, module_id) VALUES (5, 3);
-INSERT INTO route_modules (route_id, module_id) VALUES (5, 4);
-INSERT INTO route_modules (route_id, module_id) VALUES (5, 5);
-INSERT INTO route_modules (route_id, module_id) VALUES (5, 6);
-INSERT INTO route_modules (route_id, module_id) VALUES (5, 7);
-INSERT INTO route_modules (route_id, module_id) VALUES (5, 8);
-INSERT INTO route_modules (route_id, module_id) VALUES (5, 9);
-INSERT INTO route_modules (route_id, module_id) VALUES (5, 10);
-
--- 27. Training Areas (10 inserts)
+-- 32. Training Areas
 INSERT INTO training_areas (area_name, capacity, training_areas_status) VALUES ('Apolo', 33, 'Activo');
 INSERT INTO training_areas (area_name, capacity, training_areas_status) VALUES ('Sputnik', 33, 'Activo');
 INSERT INTO training_areas (area_name, capacity, training_areas_status) VALUES ('Satelite', 33, 'Activo');
@@ -351,7 +392,7 @@ INSERT INTO training_areas (area_name, capacity, training_areas_status) VALUES (
 INSERT INTO training_areas (area_name, capacity, training_areas_status) VALUES ('Jupiter', 33, 'Inactivo');
 INSERT INTO training_areas (area_name, capacity, training_areas_status) VALUES ('Saturno', 33, 'Inactivo');
 
--- 28. Schedules (10 inserts)
+-- 33. Schedules
 INSERT INTO schedules (day_of_week, start_time, end_time) VALUES ('Monday', '06:00:00', '9:00:00');
 INSERT INTO schedules (day_of_week, start_time, end_time) VALUES ('Tuesday', '06:00:00', '9:00:00');
 INSERT INTO schedules (day_of_week, start_time, end_time) VALUES ('Wednesday', '06:00:00', '9:00:00');
@@ -368,10 +409,10 @@ INSERT INTO schedules (day_of_week, start_time, end_time) VALUES ('Wednesday', '
 INSERT INTO schedules (day_of_week, start_time, end_time) VALUES ('Thursday', '14:00:00', '17:00:00');
 INSERT INTO schedules (day_of_week, start_time, end_time) VALUES ('Friday', '14:00:00', '17:00:00');
 
--- 29. Route Assignments (10 inserts)
+-- 34. Route Assignments (considering area capacity check trigger)
 INSERT INTO route_assignments (route_id, area_id, trainer_id, campers_group_id) VALUES (5, 1, 1, 1);
 
--- 30. Camper Route Enrollments (10 inserts)
+-- 35. Camper Route Enrollments (will trigger camper status change)
 INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) VALUES (1, 5, '2023-09-05', 'Active');
 INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) VALUES (2, 5, '2023-09-06', 'Active');
 INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) VALUES (3, 5, '2023-09-07', 'Active');
@@ -383,7 +424,7 @@ INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camp
 INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) VALUES (9, 5, '2023-09-13', 'Active');
 INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) VALUES (10, 5, '2023-09-14', 'Active');
 
--- 31. Trainer Schedule (10 inserts)
+-- 36. Trainer Schedule (considering overlap check trigger)
 INSERT INTO trainer_schedule (trainer_id, schedule_id, area_id, route_id, campers_group_id) VALUES (1, 1, 1, 5, 1);
 INSERT INTO trainer_schedule (trainer_id, schedule_id, area_id, route_id, campers_group_id) VALUES (2, 2, 2, 5, 1);
 INSERT INTO trainer_schedule (trainer_id, schedule_id, area_id, route_id, campers_group_id) VALUES (3, 3, 3, 5, 1);
@@ -395,70 +436,236 @@ INSERT INTO trainer_schedule (trainer_id, schedule_id, area_id, route_id, camper
 INSERT INTO trainer_schedule (trainer_id, schedule_id, area_id, route_id, campers_group_id) VALUES (3, 9, 4, 5, 1);
 INSERT INTO trainer_schedule (trainer_id, schedule_id, area_id, route_id, campers_group_id) VALUES (4, 10, 5, 5, 1);
 
--- 32. General Schedule (10 inserts)
-INSERT INTO general_schedule (route_id, module_id, schedule_id) VALUES (5, 1, 1);
-INSERT INTO general_schedule (route_id, module_id, schedule_id) VALUES (5, 2, 2);
-INSERT INTO general_schedule (route_id, module_id, schedule_id) VALUES (5, 3, 3);
-INSERT INTO general_schedule (route_id, module_id, schedule_id) VALUES (5, 4, 4);
-INSERT INTO general_schedule (route_id, module_id, schedule_id) VALUES (5, 5, 5);
-INSERT INTO general_schedule (route_id, module_id, schedule_id) VALUES (5, 6, 1);
-INSERT INTO general_schedule (route_id, module_id, schedule_id) VALUES (5, 7, 7);
-INSERT INTO general_schedule (route_id, module_id, schedule_id) VALUES (5, 8, 8);
-INSERT INTO general_schedule (route_id, module_id, schedule_id) VALUES (5, 9, 9);
-INSERT INTO general_schedule (route_id, module_id, schedule_id) VALUES (5, 10, 10);
+-- 37. General Schedule
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (5, 1, 1);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (5, 2, 2);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (5, 3, 3);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (5, 4, 4);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (5, 5, 5);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (5, 6, 6);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (5, 7, 7);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (5, 8, 8);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (5, 9, 9);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (5, 10, 10);
 
--- 33. Evaluations (10 inserts)
-INSERT INTO evaluations (camper_id, module_id) VALUES (1, 9);
-INSERT INTO evaluations (camper_id, module_id) VALUES (2, 9);
-INSERT INTO evaluations (camper_id, module_id) VALUES (3, 9);
-INSERT INTO evaluations (camper_id, module_id) VALUES (4, 9);
-INSERT INTO evaluations (camper_id, module_id) VALUES (5, 9);
-INSERT INTO evaluations (camper_id, module_id) VALUES (6, 9);
-INSERT INTO evaluations (camper_id, module_id) VALUES (7, 9);
-INSERT INTO evaluations (camper_id, module_id) VALUES (8, 9);
-INSERT INTO evaluations (camper_id, module_id) VALUES (9, 9);
-INSERT INTO evaluations (camper_id, module_id) VALUES (10, 9);
+-- 38. Evaluations
+INSERT INTO evaluations (camper_id, skill_id) VALUES (1, 9);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (2, 9);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (3, 9);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (4, 9);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (5, 9);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (6, 9);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (7, 9);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (8, 9);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (9, 9);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (10, 9);
 
--- 34. Evaluation Components (10 inserts)
+-- 39. Evaluation Components (30 inserts)
+-- For camper 1, all passing grades (triggering skill state update)
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (1, 'Teorico', 85.00, '2023-09-10');
-INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (1, 'Practico', 90.00, '2023-09-11');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (1, 'Practico', 60.00, '2023-09-11');
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (1, 'Quiz', 75.00, '2023-09-12');
+
+-- For camper 2, all passing grades
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (2, 'Teorico', 88.00, '2023-09-14');
-INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (2, 'Practico', 92.00, '2023-09-15');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (2, 'Practico', 60.00, '2023-09-15');
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (2, 'Quiz', 78.00, '2023-09-16');
+
+-- For camper 3
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (3, 'Teorico', 79.00, '2023-09-18');
-INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (3, 'Practico', 95.00, '2023-09-19');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (3, 'Practico', 60.00, '2023-09-19');
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (3, 'Quiz', 81.00, '2023-09-20');
+
+-- For camper 4
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (4, 'Teorico', 82.00, '2023-09-22');
-INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (4, 'Practico', 88.00, '2023-09-23');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (4, 'Practico', 58.00, '2023-09-23');
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (4, 'Quiz', 79.00, '2023-09-24');
+
+-- For camper 5
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (5, 'Teorico', 83.00, '2023-09-26');
-INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (5, 'Practico', 89.00, '2023-09-27');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (5, 'Practico', 59.00, '2023-09-27');
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (5, 'Quiz', 77.00, '2023-09-28');
+
+-- For camper 6
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (6, 'Teorico', 84.00, '2023-09-30');
-INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (6, 'Practico', 91.00, '2023-10-01');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (6, 'Practico', 60.00, '2023-10-01');
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (6, 'Quiz', 80.00, '2023-10-02');
+
+-- For camper 7
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (7, 'Teorico', 85.00, '2023-10-04');
-INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (7, 'Practico', 92.00, '2023-10-05');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (7, 'Practico', 60.00, '2023-10-05');
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (7, 'Quiz', 78.00, '2023-10-06');
+
+-- For camper 8
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (8, 'Teorico', 86.00, '2023-10-08');
-INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (8, 'Practico', 93.00, '2023-10-09');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (8, 'Practico', 60.00, '2023-10-09');
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (8, 'Quiz', 82.00, '2023-10-10');
+
+-- For camper 9
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (9, 'Teorico', 87.00, '2023-10-12');
-INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (9, 'Practico', 94.00, '2023-10-13');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (9, 'Practico', 60.00, '2023-10-13');
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (9, 'Quiz', 83.00, '2023-10-14');
+
+-- For camper 10
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (10, 'Teorico', 88.00, '2023-10-16');
-INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (10, 'Practico', 95.00, '2023-10-17');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (10, 'Practico', 60.00, '2023-10-17');
 INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (10, 'Quiz', 84.00, '2023-10-18');
 
--- 35. Attendance (10 inserts)
-INSERT INTO attendance (camper_id, route_id, module_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (1, 5, 9, 9, '2023-09-20', 'Present', '06:00:00', 'On time');
-INSERT INTO attendance (camper_id, route_id, module_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (2, 5, 9, 9, '2023-09-21', 'Present', '06:00:00', 'On time');
-INSERT INTO attendance (camper_id, route_id, module_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (3, 5, 9, 9, '2023-09-22', 'Present', '06:00:00', 'On time');
-INSERT INTO attendance (camper_id, route_id, module_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (4, 5, 9, 9, '2023-09-23', 'Present', '06:00:00', 'On time');
-INSERT INTO attendance (camper_id, route_id, module_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (5, 5, 9, 9, '2023-09-24', 'Present', '06:00:00', 'On time');
-INSERT INTO attendance (camper_id, route_id, module_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (6, 5, 9, 9, '2023-09-25', 'Present', '06:00:00', 'On time');
-INSERT INTO attendance (camper_id, route_id, module_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (7, 5, 9, 9, '2023-09-26', 'Present', '06:00:00', 'On time');
-INSERT INTO attendance (camper_id, route_id, module_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (8, 5, 9, 9, '2023-09-27', 'Present', '06:00:00', 'On time');
-INSERT INTO attendance (camper_id, route_id, module_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (9, 5, 9, 9, '2023-09-28', 'Present', '06:00:00', 'On time');
-INSERT INTO attendance (camper_id, route_id, module_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (10, 5, 9, 9, '2023-09-29', 'Present', '06:00:00', 'On time');
+-- 40. Attendance
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (1, 5, 9, 9, '2023-09-20', 'Present', '06:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (2, 5, 9, 9, '2023-09-21', 'Present', '06:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (3, 5, 9, 9, '2023-09-22', 'Present', '06:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (4, 5, 9, 9, '2023-09-23', 'Present', '06:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (5, 5, 9, 9, '2023-09-24', 'Present', '06:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (6, 5, 9, 9, '2023-09-25', 'Present', '06:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (7, 5, 9, 9, '2023-09-26', 'Present', '06:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (8, 5, 9, 9, '2023-09-27', 'Present', '06:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (9, 5, 9, 9, '2023-09-28', 'Present', '06:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) VALUES (10, 5, 9, 9, '2023-09-29', 'Present', '06:00:00', 'On time');
+
+-- 41. Alumni (for graduated campers)
+-- First graduate camper 1
+UPDATE camper SET status_camper = 'Graduado' WHERE id = 1;
+
+-- --------------------------------------------------------------------------------------
+-- TEST OPERATIONS FOR TRIGGERS
+-- --------------------------------------------------------------------------------------
+
+-- Test 1: trg_calculates_final_grade
+-- Already tested with initial data, but we can check with a new evaluation
+INSERT INTO evaluations (camper_id, skill_id) VALUES (1, 8);
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) 
+VALUES (LAST_INSERT_ID(), 'Teorico', 90.00, CURRENT_DATE);
+-- Verify: SELECT * FROM evaluations WHERE camper_id = 1 AND skill_id = 8;
+
+-- Test 2: trg_update_evaluation_status_log
+-- Already triggered by the previous test
+-- Verify: SELECT * FROM evaluations WHERE camper_id = 1 AND skill_id = 8;
+
+-- Test 3: trg_set_camper_inscrito
+-- Create a new camper and enroll them
+INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) 
+VALUES ('Test', 'Camper', 'test.camper@example.com', '999999999', 2, 4);
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) 
+VALUES (LAST_INSERT_ID(), 1, 1, CURRENT_DATE, 'En proceso de ingreso', 'Bajo');
+INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) 
+VALUES (LAST_INSERT_ID(), 5, CURRENT_DATE, 'Active');
+-- Verify: SELECT * FROM camper WHERE person_id = (SELECT id FROM person WHERE email = 'test.camper@example.com');
+
+-- Test 4: trg_recalculate_evaluation_grade
+-- Update an evaluation component
+UPDATE evaluation_components SET note = 95.00 WHERE evaluation_id = 1 AND component_type = 'Teorico';
+-- Verify: SELECT * FROM evaluations WHERE id = 1;
+
+-- Test 5: trg_mark_camper_retirado
+-- Delete a route enrollment
+DELETE FROM camper_route_enrollments WHERE camper_id = 11 AND route_id = 5;
+-- Verify: SELECT * FROM camper WHERE id = 11;
+-- Verify: SELECT * FROM camper_state_history WHERE camper_id = 11;
+
+-- Test 6: trg_register_module_sgdb
+-- Insert a new module with SGBD
+INSERT INTO modules (module_name, module_description, main_sgbd, alternative_sgbd, module_status) 
+VALUES ('SQL Fundamentals', 'Learning SQL basics', 1, 3, 'Activo');
+-- Verify: SELECT * FROM module_competencies WHERE module_id = LAST_INSERT_ID();
+-- Verify: SELECT * FROM notifications WHERE message LIKE '%SQL Fundamentals%';
+
+-- Test 7: trg_check_trainer_duplicates
+-- Try to insert a duplicate trainer (will generate error)
+-- INSERT INTO trainer (person_id, branch_id) VALUES (21, 1);
+-- This line is commented out because it will cause an error
+
+-- Test 8: trg_check_area_capacity
+-- Try to assign too many campers (will generate error if uncommented)
+-- INSERT INTO route_assignments (route_id, area_id, trainer_id, campers_group_id) VALUES (5, 6, 1, 1);
+-- This is commented out as it would generate an error
+
+-- Test 9: trg_update_camper_performance
+-- Insert a low-score evaluation to test performance update
+INSERT INTO evaluations (camper_id, skill_id) VALUES (2, 8);
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) 
+VALUES (LAST_INSERT_ID(), 'Teorico', 55.00, CURRENT_DATE);
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) 
+VALUES (LAST_INSERT_ID(), 'Practico', 45.00, CURRENT_DATE);
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) 
+VALUES (LAST_INSERT_ID(), 'Quiz', 50.00, CURRENT_DATE);
+-- Verify: SELECT * FROM camper WHERE id = 2;
+
+-- Test 10: trg_move_to_alumni
+-- Graduate another camper
+UPDATE camper SET status_camper = 'Graduado' WHERE id = 2;
+-- Verify: SELECT * FROM alumni WHERE camper_id = 2;
+
+-- Test 11: trg_check_trainer_schedule_overlap
+-- Try to create overlapping schedule (will generate error if uncommented)
+-- INSERT INTO trainer_schedule (trainer_id, schedule_id, area_id, route_id, campers_group_id) VALUES (1, 1, 2, 5, 1);
+-- This is commented out as it would generate an error
+
+-- Test 12: trg_free_trainer_schedules
+-- Delete a trainer and check if schedules are freed
+-- First, let's make a copy of a trainer to delete
+INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) 
+VALUES ('Temp', 'Trainer', 'temp.trainer@example.com', '888888888', 2, 5);
+INSERT INTO trainer (person_id, branch_id) VALUES (LAST_INSERT_ID(), 1);
+INSERT INTO trainer_schedule (trainer_id, schedule_id, area_id, route_id, campers_group_id) 
+VALUES (LAST_INSERT_ID(), 11, 2, 5, 1);
+-- Now delete the trainer
+DELETE FROM trainer WHERE person_id = (SELECT id FROM person WHERE email = 'temp.trainer@example.com');
+-- Verify: SELECT * FROM trainer_schedule WHERE trainer_id = (SELECT id FROM trainer WHERE person_id = (SELECT id FROM person WHERE email = 'temp.trainer@example.com'));
+
+-- Test 13: trg_update_camper_modules
+-- Update a camper's route
+UPDATE camper_route_enrollments SET route_id = 1 WHERE camper_id = 3 AND route_id = 5;
+-- Verify: SELECT * FROM notifications WHERE message LIKE '%camper ID: 3%';
+
+-- Test 14: trg_check_camper_duplicate
+-- Try to insert a duplicate camper (will generate error if uncommented)
+-- INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date) VALUES (11, 1, 1, CURRENT_DATE);
+-- This is commented out as it would generate an error
+
+-- Test 15: trg_update_skill_state
+-- Update an evaluation
+UPDATE evaluations SET final_grade = 95 WHERE camper_id = 3 AND skill_id = 9;
+-- Verify: SELECT * FROM skills WHERE id = 9;
+
+-- Test 16: trg_check_trainer_knowledge
+-- Try to assign a module to a trainer without required competencies (will generate error if uncommented)
+-- INSERT INTO trainer_module_assignments (trainer_id, module_id) VALUES (6, 1);
+-- This is commented out as it would generate an error
+
+-- Test 17: trg_free_area_campers
+-- Change an area to inactive
+UPDATE training_areas SET training_areas_status = 'Inactivo' WHERE id = 1;
+-- Verify: SELECT * FROM route_assignments WHERE area_id = 1;
+-- Verify: SELECT * FROM trainer_schedule WHERE area_id = 1;
+
+-- Test 18: trg_clone_route_template
+-- Create a new route
+INSERT INTO routes (route_name, main_sgbd, alternative_sgbd) 
+VALUES ('New Test Route', 2, 4);
+-- Verify: SELECT * FROM route_skills WHERE route_id = LAST_INSERT_ID();
+
+-- Test 19: trg_verify_practical_note
+-- Try to insert a practical note above 60 (will generate error if uncommented)
+-- INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (1, 'Practico', 101.00, CURRENT_DATE);
+-- This is commented out as it would generate an error
+
+-- Test 20: trg_notify_route_changes
+-- Update a route
+-- Crear la ruta primero:
+INSERT INTO routes (route_name, main_sgbd, alternative_sgbd) 
+VALUES ('New Test Route', 2, 4);
+-- Obtener el ID de la ruta recién creada
+SELECT id FROM routes WHERE route_name = 'New Test Route';
+-- Usar ese ID real en tu comando de asignación
+INSERT INTO route_assignments (route_id, area_id, trainer_id, campers_group_id)
+VALUES (6, 2, 1, 1);  -- Reemplaza 6 con el ID real obtenido
+-- Ahora actualiza la ruta
+UPDATE routes SET route_name = 'Updated Test Route' WHERE route_name = 'New Test Route';
+-- Verifica las notificaciones: SELECT * FROM notifications WHERE message LIKE '%Updated Test Route%';
+
+-- Cleanup test data if needed:
+-- DELETE FROM person WHERE email = 'test.camper@example.com';
+-- DELETE FROM person WHERE email = 'temp.trainer@example.com';
+
+

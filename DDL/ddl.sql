@@ -128,8 +128,9 @@ CREATE TABLE IF NOT EXISTS camper(
     guardian_id INT,
     branch_id INT,
     enrollment_date DATE NOT NULL,
-    status_camper ENUM('En proceso de ingreso', 'Inscrito', 'Aprobado', 'Cursando', 'Graduado', 'Expulsado', 'Retirado') NOT NULL,
+    status_camper ENUM('En proceso de ingreso', 'Inscrito', 'Aprobado', 'Cursando', 'Graduado', 'Expulsado', 'Retirado') NOT NULL DEFAULT 'En proceso de ingreso',
     risk_level ENUM('Bajo', 'Medio', 'Alto') NOT NULL DEFAULT 'Bajo',
+    camper_performance ENUM('Bajo', 'Medio', 'Alto') DEFAULT 'Medio',
     FOREIGN KEY (person_id) REFERENCES person(id),
     FOREIGN KEY (guardian_id) REFERENCES guardian(id),
     FOREIGN KEY (branch_id) REFERENCES branches(id)
@@ -222,33 +223,93 @@ CREATE TABLE IF NOT EXISTS campers_group_members (
     FOREIGN KEY (camper_id) REFERENCES camper(id)
 );
 
--- creacion tabla modulos
+-- creacion tabla skills (renamed from modules)
 
-CREATE TABLE IF NOT EXISTS modules (
+CREATE TABLE IF NOT EXISTS skills (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    module_name VARCHAR(100) NOT NULL,
-    module_description TEXT,
+    skill_name VARCHAR(100) NOT NULL,
+    skill_description TEXT,
+    skill_state ENUM('Aprobado', 'Reprobado', 'En curso') NOT NULL DEFAULT 'En curso',
     theoretical_weight DECIMAL(2,0) CHECK (theoretical_weight = 30),
     practical_weight DECIMAL(2,0) CHECK (practical_weight = 60),
     quizzes_weight DECIMAL(2,0) CHECK (quizzes_weight = 10)
 );
 
-CREATE TABLE IF NOT EXISTS base_route_modules (
+-- creacion tabla base_route_skills (renamed from base_route_modules)
+
+CREATE TABLE IF NOT EXISTS base_route_skills (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    skill_id INT NOT NULL,
+    base_route_description TEXT,
+    FOREIGN KEY (skill_id) REFERENCES skills(id)
+);
+
+-- creacion tabla ruta skills (renamed from route_modules)
+
+CREATE TABLE IF NOT EXISTS route_skills (
+    route_id INT,
+    skill_id INT,
+    main_sgbd INT,
+    alternative_sgbd INT,
+    PRIMARY KEY (route_id, skill_id),
+    FOREIGN KEY (route_id) REFERENCES routes(id),
+    FOREIGN KEY (skill_id) REFERENCES skills(id),
+    FOREIGN KEY (main_sgbd) REFERENCES sgbds(id),
+    FOREIGN KEY (alternative_sgbd) REFERENCES sgbds(id)
+);
+
+CREATE TABLE IF NOT EXISTS modules(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    module_name VARCHAR(100) NOT NULL,
+    module_description TEXT,
+    main_sgbd INT,
+    alternative_sgbd INT,
+    module_status ENUM('Activo', 'Inactivo') NOT NULL DEFAULT 'Activo',
+    FOREIGN KEY (main_sgbd) REFERENCES sgbds(id),
+    FOREIGN KEY (alternative_sgbd) REFERENCES sgbds(id)
+);
+
+CREATE TABLE IF NOT EXISTS module_skills(
     id INT AUTO_INCREMENT PRIMARY KEY,
     module_id INT NOT NULL,
-    base_route_description TEXT,
+    skill_id INT NOT NULL,
+    FOREIGN KEY (module_id) REFERENCES modules(id),
+    FOREIGN KEY (skill_id) REFERENCES skills(id)
+);
+
+CREATE TABLE IF NOT EXISTS module_competencies(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    module_id INT NOT NULL,
+    competency_id INT NOT NULL,
+    FOREIGN KEY (module_id) REFERENCES modules(id),
+    FOREIGN KEY (competency_id) REFERENCES competencies(id)
+);
+
+CREATE TABLE IF NOT EXISTS sessions_class(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    session_name VARCHAR(100) NOT NULL,
+    session_description TEXT,
+    session_date DATE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS session_modules(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    session_id INT NOT NULL,
+    module_id INT NOT NULL,
+    FOREIGN KEY (session_id) REFERENCES sessions_class(id),
     FOREIGN KEY (module_id) REFERENCES modules(id)
 );
 
--- creacion tabla ruta modulos
+-- creacion tabla asignacion de modulos a trainers
 
-CREATE TABLE IF NOT EXISTS route_modules (
-    route_id INT,
-    module_id INT,
-    PRIMARY KEY (route_id, module_id),
-    FOREIGN KEY (route_id) REFERENCES routes(id),
-    FOREIGN KEY (module_id) REFERENCES modules(id)
-);
+CREATE TABLE trainer_module_assignments (
+    trainer_id INT NOT NULL,
+    module_id INT NOT NULL,
+    assigned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (trainer_id, module_id),
+    CONSTRAINT fk_trainer FOREIGN KEY (trainer_id) REFERENCES trainer(id),
+    CONSTRAINT fk_module FOREIGN KEY (module_id) REFERENCES modules(id)
+); 
 
 -- creacion tabla egresados
 
@@ -329,22 +390,23 @@ CREATE TABLE IF NOT EXISTS trainer_schedule (
 CREATE TABLE IF NOT EXISTS general_schedule (
     id INT AUTO_INCREMENT PRIMARY KEY,
     route_id INT NOT NULL,
-    module_id INT NOT NULL,
+    skill_id INT NOT NULL,
     schedule_id INT NOT NULL,
     FOREIGN KEY (route_id) REFERENCES routes(id),
-    FOREIGN KEY (module_id) REFERENCES modules(id),
+    FOREIGN KEY (skill_id) REFERENCES skills(id),
     FOREIGN KEY (schedule_id) REFERENCES schedules(id),
-    CONSTRAINT unique_schedule UNIQUE (route_id, module_id, schedule_id)
+    CONSTRAINT unique_schedule UNIQUE (route_id, skill_id, schedule_id)
 );
 
 -- Tabla de evaluaciones generales
 CREATE TABLE IF NOT EXISTS evaluations (
     id INT AUTO_INCREMENT PRIMARY KEY,
     camper_id INT NOT NULL,
-    module_id INT NOT NULL,
+    skill_id INT NOT NULL,
+    camper_state ENUM('Aprobado', 'Reprobado'),
     final_grade DECIMAL(3,0) DEFAULT 0.00,
     FOREIGN KEY (camper_id) REFERENCES camper(id),
-    FOREIGN KEY (module_id) REFERENCES modules(id)
+    FOREIGN KEY (skill_id) REFERENCES skills(id)
 );
 
 -- Tabla de componentes de evaluación
@@ -363,7 +425,7 @@ CREATE TABLE IF NOT EXISTS attendance (
     id INT AUTO_INCREMENT PRIMARY KEY,
     camper_id INT NOT NULL,
     route_id INT NOT NULL,
-    module_id INT NOT NULL,
+    skill_id INT NOT NULL,
     schedule_id INT NOT NULL,
     attendance_date DATE,
     attendance_status ENUM('Present', 'Absent', 'Late') DEFAULT 'Absent',
@@ -372,6 +434,6 @@ CREATE TABLE IF NOT EXISTS attendance (
     evidence_url VARCHAR(255),
     FOREIGN KEY (camper_id) REFERENCES camper(id),
     FOREIGN KEY (route_id) REFERENCES routes(id),
-    FOREIGN KEY (module_id) REFERENCES modules(id),
+    FOREIGN KEY (skill_id) REFERENCES skills(id),
     FOREIGN KEY (schedule_id) REFERENCES schedules(id)
 );
