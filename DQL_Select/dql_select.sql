@@ -84,14 +84,14 @@ WHERE cre.camper_id IS NULL;
 
 -- 1. Obtener las notas teóricas, prácticas y quizzes de cada camper por módulo.
 
-SELECT m.module_name AS Modulo, c.id, p.first_name AS Nombre, ec.component_type AS Tipo_Nota, ec.note AS Nota
+SELECT s.skill_name AS Modulo, c.id, p.first_name AS Nombre, ec.component_type AS Tipo_Nota, ec.note AS Nota
 FROM camper c
 INNER JOIN person p ON c.person_id = p.id
 INNER JOIN evaluations e ON c.id = e.camper_id
 INNER JOIN evaluation_components ec ON e.id = ec.evaluation_id
-INNER JOIN modules m ON e.module_id = m.id
+INNER JOIN skills s ON e.skill_id = s.id
 WHERE ec.component_type IN ('Teorico', 'Practico', 'Quiz')
-ORDER BY m.module_name ASC;
+ORDER BY s.skill_name ASC;
 
 -- 2. Calcular la nota final de cada camper por módulo.
 

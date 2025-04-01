@@ -302,7 +302,7 @@ CREATE TABLE IF NOT EXISTS session_modules(
 
 -- creacion tabla asignacion de modulos a trainers
 
-CREATE TABLE trainer_module_assignments (
+CREATE TABLE IF NOT EXISTS trainer_module_assignments (
     trainer_id INT NOT NULL,
     module_id INT NOT NULL,
     assigned_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
