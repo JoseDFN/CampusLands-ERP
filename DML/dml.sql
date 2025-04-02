@@ -526,3 +526,270 @@ INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_d
 -- 41. Alumni (for graduated campers)
 -- First graduate camper 1
 UPDATE camper SET status_camper = 'Graduado' WHERE id = 1;
+
+-- Additional inserts to ensure queries return multiple results
+
+-- Additional countries
+INSERT INTO countries (country_name, iso_code_country) VALUES ('México', 'MEX');
+INSERT INTO countries (country_name, iso_code_country) VALUES ('Ecuador', 'ECU');
+INSERT INTO countries (country_name, iso_code_country) VALUES ('Venezuela', 'VEN');
+INSERT INTO countries (country_name, iso_code_country) VALUES ('Uruguay', 'URY');
+INSERT INTO countries (country_name, iso_code_country) VALUES ('Paraguay', 'PRY');
+
+-- Additional regions
+INSERT INTO regions (region_name, country_id) VALUES ('Antioquia', 1);
+INSERT INTO regions (region_name, country_id) VALUES ('Valle del Cauca', 1);
+INSERT INTO regions (region_name, country_id) VALUES ('Buenos Aires', 2);
+INSERT INTO regions (region_name, country_id) VALUES ('Córdoba', 2);
+INSERT INTO regions (region_name, country_id) VALUES ('São Paulo', 3);
+
+-- Additional cities
+INSERT INTO cities (city_name, region_id) VALUES ('Medellín', 4);
+INSERT INTO cities (city_name, region_id) VALUES ('Cali', 5);
+INSERT INTO cities (city_name, region_id) VALUES ('La Plata', 6);
+INSERT INTO cities (city_name, region_id) VALUES ('Córdoba', 7);
+INSERT INTO cities (city_name, region_id) VALUES ('São Paulo', 8);
+
+-- Additional addresses
+INSERT INTO addresses (street, building_number, postal_code, city_id, additional_info) VALUES ('Carrera 45', '145', '050001', 11, 'Dirección en Medellín');
+INSERT INTO addresses (street, building_number, postal_code, city_id, additional_info) VALUES ('Calle 5', '55', '760001', 12, 'Dirección en Cali');
+INSERT INTO addresses (street, building_number, postal_code, city_id, additional_info) VALUES ('Avenida 7', '700', '1900', 13, 'Dirección en La Plata');
+INSERT INTO addresses (street, building_number, postal_code, city_id, additional_info) VALUES ('Calle 10', '100', '5000', 14, 'Dirección en Córdoba');
+INSERT INTO addresses (street, building_number, postal_code, city_id, additional_info) VALUES ('Av. Paulista', '1000', '01310', 15, 'Dirección en São Paulo');
+
+-- Additional companies
+INSERT INTO companies (register_number, legal_name, comercial_name, country_id, foundation_date, juridical_form) VALUES ('REG002', 'Tech Solutions', 'TechSol', 2, '2005-05-15', 'SA');
+INSERT INTO companies (register_number, legal_name, comercial_name, country_id, foundation_date, juridical_form) VALUES ('REG003', 'Global Learning', 'GLearn', 3, '2010-07-20', 'LLC');
+
+-- Additional branches
+INSERT INTO branches (branch_name, address_id, company_id) VALUES ('Campus Medellín', 30, 1);
+INSERT INTO branches (branch_name, address_id, company_id) VALUES ('Sucursal Buenos Aires', 32, 2);
+INSERT INTO branches (branch_name, address_id, company_id) VALUES ('Sede São Paulo', 34, 3);
+
+-- Additional phone numbers
+INSERT INTO phone_numbers (phone_number, extension, phone_type_id) VALUES ('3001000017', '057', 1);
+INSERT INTO phone_numbers (phone_number, extension, phone_type_id) VALUES ('3001000018', '057', 1);
+INSERT INTO phone_numbers (phone_number, extension, phone_type_id) VALUES ('3001000019', '057', 1);
+INSERT INTO phone_numbers (phone_number, extension, phone_type_id) VALUES ('3001000020', '057', 1);
+INSERT INTO phone_numbers (phone_number, extension, phone_type_id) VALUES ('6012000014', '057', 2);
+INSERT INTO phone_numbers (phone_number, extension, phone_type_id) VALUES ('6012000015', '057', 2);
+
+-- Additional persons
+INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) VALUES ('Carlos', 'Gómez Torres', 'carlos.gomez@example.com', '200000031', 2, 30);
+INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) VALUES ('Laura', 'Jiménez Vargas', 'laura.jimenez@example.com', '200000032', 2, 31);
+INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) VALUES ('Alejandro', 'Pérez López', 'alejandro.perez@example.com', '200000033', 2, 32);
+INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) VALUES ('María', 'González Soto', 'maria.gonzalez@example.com', '200000034', 2, 33);
+INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) VALUES ('Juan', 'Ramírez Ortega', 'juan.ramirez@campuslands.com', '100000007', 2, 34);
+INSERT INTO person (first_name, last_names, email, document_number, document_type_id, address_id) VALUES ('Ana', 'Fernández Ruiz', 'ana.fernandez@campuslands.com', '100000008', 2, 29);
+
+-- Link persons with phones
+INSERT INTO person_phones (person_id, phone_id) VALUES (27, 30);
+INSERT INTO person_phones (person_id, phone_id) VALUES (28, 31);
+INSERT INTO person_phones (person_id, phone_id) VALUES (29, 32);
+INSERT INTO person_phones (person_id, phone_id) VALUES (30, 33);
+INSERT INTO person_phones (person_id, phone_id) VALUES (31, 34);
+INSERT INTO person_phones (person_id, phone_id) VALUES (32, 35);
+
+-- Additional guardians
+INSERT INTO guardian (person_id) VALUES (27);
+INSERT INTO guardian (person_id) VALUES (28);
+INSERT INTO guardian (person_id) VALUES (29);
+INSERT INTO guardian (person_id) VALUES (30);
+
+-- Additional campers
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (28, 11, 1, '2023-10-01', 'En proceso de ingreso', 'Bajo');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (29, 12, 2, '2023-10-02', 'En proceso de ingreso', 'Medio');
+INSERT INTO camper (person_id, guardian_id, branch_id, enrollment_date, status_camper, risk_level) VALUES (30, 13, 3, '2023-10-03', 'En proceso de ingreso', 'Alto');
+
+-- Additional camper state history
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (11, 'En proceso de ingreso', 'Inscrito', 'Completó documentación');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (12, 'En proceso de ingreso', 'Inscrito', 'Completó pago inicial');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (13, 'En proceso de ingreso', 'Inscrito', 'Completó entrevista');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (11, 'Inscrito', 'Aprobado', 'Pasó evaluación inicial');
+INSERT INTO camper_state_history (camper_id, old_state, new_state, reason) VALUES (12, 'Inscrito', 'Aprobado', 'Pasó evaluación inicial');
+
+-- Additional trainers
+INSERT INTO trainer (person_id, branch_id) VALUES (31, 2);
+INSERT INTO trainer (person_id, branch_id) VALUES (32, 3);
+
+-- Additional competencies
+INSERT INTO competencies (competency_name) VALUES ('React');
+INSERT INTO competencies (competency_name) VALUES ('Node.js');
+INSERT INTO competencies (competency_name) VALUES ('Ruby');
+INSERT INTO competencies (competency_name) VALUES ('Docker');
+INSERT INTO competencies (competency_name) VALUES ('AWS');
+
+-- Additional trainer competencies
+INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (7, 11);
+INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (7, 12);
+INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (8, 13);
+INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (8, 14);
+INSERT INTO trainer_competencies (trainer_id, competency_id) VALUES (8, 15);
+
+-- Additional notifications
+INSERT INTO notifications (trainer_id, message, created_at) VALUES (7, 'Notification for new trainer', '2023-10-20 10:00:00');
+INSERT INTO notifications (trainer_id, message, created_at) VALUES (8, 'Notification for new trainer', '2023-10-20 10:30:00');
+INSERT INTO notifications (trainer_id, message, created_at) VALUES (1, 'Class canceled tomorrow', '2023-10-21 09:00:00');
+INSERT INTO notifications (trainer_id, message, created_at) VALUES (2, 'Meeting scheduled for next week', '2023-10-21 11:00:00');
+
+-- Additional routes
+INSERT INTO routes (route_name, main_sgbd, alternative_sgbd) VALUES ('DevOps', 9, 10);
+INSERT INTO routes (route_name, main_sgbd, alternative_sgbd) VALUES ('Mobile Development', 2, 6);
+INSERT INTO routes (route_name, main_sgbd, alternative_sgbd) VALUES ('Data Science', 1, 3);
+
+-- Additional skills
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Docker & Kubernetes', 'Containers and orchestration', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('React Native', 'Mobile app development', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Data Analysis', 'Statistics and visualization', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Cloud Computing', 'AWS, Azure, GCP basics', 30, 60, 10);
+INSERT INTO skills (skill_name, skill_description, theoretical_weight, practical_weight, quizzes_weight) VALUES ('Machine Learning', 'ML fundamentals', 30, 60, 10);
+
+-- Additional base route skills
+INSERT INTO base_route_skills (skill_id, base_route_description) VALUES (11, 'Base description for DevOps module');
+INSERT INTO base_route_skills (skill_id, base_route_description) VALUES (12, 'Base description for Mobile Development module');
+INSERT INTO base_route_skills (skill_id, base_route_description) VALUES (13, 'Base description for Data Analysis module');
+INSERT INTO base_route_skills (skill_id, base_route_description) VALUES (14, 'Base description for Cloud Computing module');
+INSERT INTO base_route_skills (skill_id, base_route_description) VALUES (15, 'Base description for Machine Learning module');
+
+-- Additional route skills
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (6, 11, 9, 10);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (7, 12, 2, 6);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (8, 13, 1, 3);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (8, 14, 1, 3);
+INSERT INTO route_skills (route_id, skill_id, main_sgbd, alternative_sgbd) VALUES (8, 15, 1, 3);
+
+-- Additional modules
+INSERT INTO modules (module_name, module_description, module_status) VALUES 
+  ('DevOps Essentials', 'Introduction to DevOps practices and tools', 'Activo'),
+  ('Mobile Development', 'Creating applications for iOS and Android', 'Activo'),
+  ('Data Science Fundamentals', 'Introduction to data analysis and visualization', 'Activo');
+
+-- Additional module skills
+INSERT INTO module_skills (module_id, skill_id) VALUES 
+  (4, 11), 
+  (5, 12), 
+  (6, 13),
+  (6, 14),
+  (6, 15);
+
+-- Additional module competencies
+INSERT INTO module_competencies (module_id, competency_id) VALUES
+  (4, 14), -- DevOps Essentials - Docker
+  (4, 15), -- DevOps Essentials - AWS
+  (5, 11), -- Mobile Development - React
+  (5, 12), -- Mobile Development - Node.js
+  (6, 3);  -- Data Science Fundamentals - Python
+
+-- Additional sessions
+INSERT INTO sessions_class (session_name, session_description, session_date) VALUES 
+  ('DevOps Workshop', 'Hands-on workshop on containerization', '2023-11-10'),
+  ('Mobile App Development', 'Creating your first mobile app', '2023-11-15'),
+  ('Data Science Introduction', 'Basic concepts of data analysis', '2023-11-20');
+
+-- Additional session modules
+INSERT INTO session_modules (session_id, module_id) VALUES 
+  (3, 4), 
+  (4, 5), 
+  (5, 6);
+
+-- Additional trainer module assignments
+INSERT INTO trainer_module_assignments (trainer_id, module_id) VALUES 
+  (7, 4), -- New trainer assigned to DevOps
+  (8, 5), -- New trainer assigned to Mobile Development
+  (8, 6); -- New trainer also assigned to Data Science
+
+-- Additional campers groups
+INSERT INTO campers_group (group_name, route_id, creation_date) VALUES ('DevOps Group', 6, CURRENT_DATE);
+INSERT INTO campers_group (group_name, route_id, creation_date) VALUES ('Mobile Dev Group', 7, CURRENT_DATE);
+INSERT INTO campers_group (group_name, route_id, creation_date) VALUES ('Data Science Group', 8, CURRENT_DATE);
+
+-- Additional campers group members
+INSERT INTO campers_group_members (group_id, camper_id) VALUES (2, 11);
+INSERT INTO campers_group_members (group_id, camper_id) VALUES (2, 12);
+INSERT INTO campers_group_members (group_id, camper_id) VALUES (3, 13);
+INSERT INTO campers_group_members (group_id, camper_id) VALUES (3, 1);
+INSERT INTO campers_group_members (group_id, camper_id) VALUES (4, 2);
+INSERT INTO campers_group_members (group_id, camper_id) VALUES (4, 3);
+
+-- Additional route assignments
+INSERT INTO route_assignments (route_id, area_id, trainer_id, campers_group_id) VALUES (6, 2, 7, 2);
+INSERT INTO route_assignments (route_id, area_id, trainer_id, campers_group_id) VALUES (7, 3, 8, 3);
+INSERT INTO route_assignments (route_id, area_id, trainer_id, campers_group_id) VALUES (8, 4, 1, 4);
+
+-- Additional camper route enrollments
+INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) VALUES (11, 6, '2023-10-05', 'Active');
+INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) VALUES (12, 6, '2023-10-06', 'Active');
+INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) VALUES (13, 7, '2023-10-07', 'Active');
+INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) VALUES (1, 7, '2023-10-08', 'Active');
+INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) VALUES (2, 8, '2023-10-09', 'Active');
+INSERT INTO camper_route_enrollments (camper_id, route_id, enrollment_date, camper_route_enrollment_status) VALUES (3, 8, '2023-10-10', 'Active');
+
+-- Additional trainer schedules
+INSERT INTO trainer_schedule (trainer_id, schedule_id, area_id, route_id, campers_group_id) VALUES (7, 11, 2, 6, 2);
+INSERT INTO trainer_schedule (trainer_id, schedule_id, area_id, route_id, campers_group_id) VALUES (8, 12, 3, 7, 3);
+INSERT INTO trainer_schedule (trainer_id, schedule_id, area_id, route_id, campers_group_id) VALUES (1, 13, 4, 8, 4);
+
+-- Additional general schedules
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (6, 11, 11);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (7, 12, 12);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (8, 13, 13);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (8, 14, 14);
+INSERT INTO general_schedule (route_id, skill_id, schedule_id) VALUES (8, 15, 15);
+
+-- Additional evaluations
+INSERT INTO evaluations (camper_id, skill_id) VALUES (11, 11);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (12, 11);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (13, 12);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (1, 12);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (2, 13);
+INSERT INTO evaluations (camper_id, skill_id) VALUES (3, 13);
+
+-- Additional evaluation components
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (11, 'Teorico', 90.00, '2023-10-20');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (11, 'Practico', 85.00, '2023-10-21');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (11, 'Quiz', 88.00, '2023-10-22');
+
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (12, 'Teorico', 75.00, '2023-10-23');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (12, 'Practico', 65.00, '2023-10-24');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (12, 'Quiz', 70.00, '2023-10-25');
+
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (13, 'Teorico', 95.00, '2023-10-26');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (13, 'Practico', 92.00, '2023-10-27');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (13, 'Quiz', 90.00, '2023-10-28');
+
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (14, 'Teorico', 80.00, '2023-10-29');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (14, 'Practico', 82.00, '2023-10-30');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (14, 'Quiz', 78.00, '2023-10-31');
+
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (15, 'Teorico', 85.00, '2023-11-01');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (15, 'Practico', 87.00, '2023-11-02');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (15, 'Quiz', 83.00, '2023-11-03');
+
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (16, 'Teorico', 70.00, '2023-11-04');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (16, 'Practico', 75.00, '2023-11-05');
+INSERT INTO evaluation_components (evaluation_id, component_type, note, evaluation_date) VALUES (16, 'Quiz', 72.00, '2023-11-06');
+
+-- Additional attendance records
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) 
+VALUES (11, 6, 11, 11, '2023-10-20', 'Present', '14:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) 
+VALUES (12, 6, 11, 11, '2023-10-20', 'Present', '14:05:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) 
+VALUES (13, 7, 12, 12, '2023-10-21', 'Present', '14:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) 
+VALUES (1, 7, 12, 12, '2023-10-21', 'Present', '14:02:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) 
+VALUES (2, 8, 13, 13, '2023-10-22', 'Present', '14:00:00', 'On time');
+INSERT INTO attendance (camper_id, route_id, skill_id, schedule_id, attendance_date, attendance_status, arrival_time, justification) 
+VALUES (3, 8, 13, 13, '2023-10-22', 'Present', '14:00:00', 'On time');
+
+-- Graduate a second camper
+UPDATE camper SET status_camper = 'Graduado' WHERE id = 2;
+
+-- Insert into alumni for the second graduate
+INSERT INTO alumni (camper_id, graduation_date, route_id, additional_info) 
+VALUES (2, '2023-11-30', 5, 'Completed with distinction');
+
+-- Add a second alumni record for first camper with another route
+INSERT INTO alumni (camper_id, graduation_date, route_id, additional_info) 
+VALUES (1, '2023-12-15', 6, 'Completed additional certification');
