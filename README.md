@@ -76,6 +76,8 @@ El sistema está compuesto por las siguientes categorías de tablas que interact
 
 Las tablas se relacionan entre sí mediante un sistema de claves foráneas que garantiza la integridad referencial y permite un seguimiento completo del progreso académico. Esta estructura facilita la gestión eficiente de los procesos formativos, desde la inscripción inicial del camper hasta su graduación, incluyendo evaluaciones, asistencia y asignación de recursos.
 
+Visualiza el diagrama del esquema aquí [Diagrama](Diagrama.png)
+
 ## Documentación Detallada
 
-Para visualizar todas las consultas, procedimientos almacenados, funciones y triggers implementados en este proyecto, consulte el archivo [@CampusLands-ERP.md](CampusLands-ERP.md).
+Para visualizar todas las consultas, procedimientos almacenados, funciones y triggers implementados en este proyecto, consulte el archivo [CampusLands-ERP.md](CampusLands-ERP.md).
